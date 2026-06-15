@@ -1,0 +1,4 @@
+project_id = "nxzawfmnzmgvjjzsqeei"
+
+[functions.mercadopago-webhook]
+verify_jwt = false
