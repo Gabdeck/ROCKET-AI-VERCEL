@@ -1,18 +1,19 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
+import { defineConfig } from "@tanstack/react-start/config";
 import tailwindcss from "@tailwindcss/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  plugins: [
-    tsconfigPaths(),
-    tailwindcss(),
-    TanStackRouterVite(),
-    react(),
-  ],
-  build: {
-    outDir: "dist",
-    chunkSizeWarningLimit: 1000,
+  tsr: {
+    routesDirectory: "./src/routes",
+    generatedRouteTree: "./src/routeTree.gen.ts",
+  },
+  vite: {
+    plugins: [tailwindcss(), tsconfigPaths()],
+    build: {
+      chunkSizeWarningLimit: 1000,
+    },
+  },
+  server: {
+    preset: "vercel",
   },
 });
